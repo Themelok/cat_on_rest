@@ -11,11 +11,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Breed',
+            name='Author',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('breed', models.CharField(max_length=50)),
-                ('color', models.CharField(max_length=50)),
+                ('last_name', models.CharField(max_length=50)),
+                ('first_name', models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
@@ -23,8 +23,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50)),
-                ('age', models.IntegerField()),
-                ('breed', models.ForeignKey(to='catmodel.Breed')),
+                ('age', models.PositiveSmallIntegerField()),
+                ('description', models.TextField(null=True, blank=True)),
+                ('image', models.ImageField(upload_to=b'images/')),
+                ('author', models.ForeignKey(related_name='cats', to='catmodel.Author')),
             ],
         ),
     ]

@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from catmodel.models import Cat, Breed
+from catmodel.models import Cat, Author
 
 
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cat
-        fields = ("name", "age", "breed")
+        fields = '__all__'
 
 
-class BreedSerializer(serializers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Breed
+        model = Author
         fields = '__all__'

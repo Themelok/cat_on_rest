@@ -13,17 +13,20 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-# from django.conf.urls import include, url
-# from django.contrib import admin
-#
-# urlpatterns = [
-#     url(r'^admin/', include(admin.site.urls)),
-# ]
-from catmodel.views import CatViewSet, BreedViewSet
+from django.conf.urls import include, url
+from django.contrib import admin
+from catmodel.views import CatViewSet, AuthorViewSet
 from rest_framework.routers import DefaultRouter
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = DefaultRouter()
 router.register(prefix='cats', viewset=CatViewSet)
-router.register(prefix='breeds', viewset=BreedViewSet)
+router.register(prefix='authors', viewset=AuthorViewSet)
 
-urlpatterns = router.urls
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+]
+urlpatterns += router.urls
+urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
