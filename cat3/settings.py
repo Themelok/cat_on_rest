@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'catmodel',
     'rest_framework',
+    'catmodel_frontend',
 )
 
 MIDDLEWARE_CLASSES = (
