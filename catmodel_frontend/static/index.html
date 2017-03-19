@@ -8,7 +8,7 @@
     <script src="node_modules/angular-resource/angular-resource.min.js"></script>
     <!-- Include app -->
     <script src="js/app.js"></script>
-
+     <script src="js/filesModelDirective.js"></script>
     <script src="js/cats.rest.js"></script>
     <script src="js/auth.rest.js"></script>
 
@@ -19,11 +19,22 @@
 
 
 <div ng-app="catmodelFrontendApp" ng-controller="MainCtrl">
-    <form class="form" name="form" ng-submit="uploadAuthor()">
+    <form class="form" ng-submit="uploadAuthor()">
         <input type="text" ng-model="newAuthor.first_name"  aria-invalid="false" placeholder="First Name" >
         <input type="text" ng-model="newAuthor.last_name"  aria-invalid="false" placeholder="Last Name" >
         <button type="submit">add me</button>
     </form>
+
+    <form class="form" name="form1" ng-submit="uploadCats()">
+        <input type="text" ng-model="newCats.name">
+        <input type="number" ng-model="newCats.age">
+        <textarea ng-model="newCats.description"></textarea>
+        <input type="file" files-model="newCats.image">
+
+        <input type="number" ng-model="newCats.author">
+        <button type="submit">add cat</button>
+    </form>
+
 
     <div ng-repeat="author in auth track by author.id">
         <h3>Cats of {{author.first_name}} {{author.last_name}}</h3>
@@ -36,9 +47,6 @@
         </ul>
     </div>
 </div>
-
-
-<script src="/static/rest_framework/js/ajax-form.js"></script>
 
 
 </body>

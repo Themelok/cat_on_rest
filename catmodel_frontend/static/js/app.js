@@ -30,19 +30,19 @@ myApp.controller('MainCtrl', function($scope, Cats, Authors)
         );
     };
 
-//
-//    $scope.uploadCats = function()
-//    {
-//        // call REST API endpoint
-//        Cats.save($scope.newCats).$promise.then(
-//            function(response) {
-//                // the response is a valid image, put it at the front of the images array
-//                $scope.cats.unshift(response);
-//            },
-//            function(rejection) {
-//                console.log('Failed to upload cat');
-//                console.log(rejection);
-//            }
-//        );
-//    };
+
+    $scope.uploadCats = function()
+    {
+        // call REST API endpoint
+        Cats.save($scope.newCats).$promise.then(
+            function(response) {
+                // the response is a valid image, put it at the front of the images array
+                $scope.cats.unshift(response);
+            },
+            function(rejection) {
+                console.log('Failed to upload cat');
+                console.log(rejection);
+            }
+        );
+    };
 });
