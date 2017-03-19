@@ -30,8 +30,9 @@
         <input type="number" ng-model="newCats.age">
         <textarea ng-model="newCats.description"></textarea>
         <input type="file" files-model="newCats.image">
-
-        <input type="number" ng-model="newCats.author">
+<select ng-model="newCats.author">
+            <option ng-repeat="author in auth track by author.id" value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+ </select>
         <button type="submit">add cat</button>
     </form>
 
