@@ -26,11 +26,11 @@
     </form>
 
     <form class="form" name="form1" ng-submit="uploadCats()">
-        <input type="text" ng-model="newCats.name">
-        <input type="number" ng-model="newCats.age">
-        <textarea ng-model="newCats.description"></textarea>
+        <input type="text" ng-model="newCats.name" placeholder="Cats Name">
+        <input type="number" ng-model="newCats.age" placeholder="Cats Age">
+        <textarea ng-model="newCats.description" placeholder="Your cat description"></textarea>
         <input type="file" files-model="newCats.image">
-<select ng-model="newCats.author">
+<select ng-model="newCats.author" placeholder="And you are...?" >
             <option ng-repeat="author in auth track by author.id" value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
  </select>
         <button type="submit">add cat</button>
@@ -39,8 +39,9 @@
 
     <div ng-repeat="author in auth track by author.id">
         <h3>Cats of {{author.first_name}} {{author.last_name}}</h3>
-        <div ng-repeat="cat in cats|filter:{'author': author.id}:true"></div>
+
         <ul ng-repeat="cat in cats|filter:{'author': author.id}:true">
+            <button ng-click="deleteCat(cat)">!! Delete</button><br />
             <li><img ng-src="{{ cat.image }}" width="121"></li>
             <li><span>Name:</span> {{ cat.name }}</li>
             <li><span>Age:</span> {{ cat.age }}</li>

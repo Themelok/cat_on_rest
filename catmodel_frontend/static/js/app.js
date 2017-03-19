@@ -15,6 +15,30 @@ myApp.controller('MainCtrl', function($scope, Cats, Authors)
     $scope.newCats = {};
     $scope.newAuthor={};
 
+
+$scope.deleteCat = function(cat)
+    {
+
+        cat.$delete(
+            function(response)
+            {
+                // success delete
+                console.log('Deleted it');
+                // update $scope.images
+                $scope.cats = Cats.query();
+            },
+            function(rejection)
+            {
+                console.log('Failed to delete image');
+                console.log(rejection);
+            }
+        );
+    };
+
+
+
+
+
     $scope.uploadAuthor = function()
     {
         // call REST API endpoint
