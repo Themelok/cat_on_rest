@@ -61,29 +61,31 @@
                                 {{author.last_name}}
                             </option>
                         </select>
+                        <button class="btn btn-primary" type="submit" style="margin-top: 4%;">Share your Cat for Great Good!!!</button>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="comment">Your cat description:</label>
                         <textarea ng-model="newCats.description" placeholder="Your cat description" class="form-control"
-                                  rows="7" id="comment"></textarea>
-
+                                  rows="4" id="comment"></textarea>
+                        <label for="photo">And your cat Photo:</label>
+ <input type="file" files-model="newCats.image" id="photo" >
                     </div>
 
 
-                    <div class="row">
-                        <div class="form-group col-md-6">
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-md-6">-->
 
-                            <button class="btn btn-primary" type="submit">Share your Cat for Great Good!!!</button>
+                            <!---->
 
-                        </div>
+                        <!--</div>-->
 
-                        <div class="form-group col-md-6">
+                        <!--<div class="form-group col-md-6">-->
 
-                            <input type="file" files-model="newCats.image">
+                           <!---->
 
-                        </div>
+                        <!--</div>-->
 
-                    </div>
+                    <!--</div>-->
                 </div>
 
 
