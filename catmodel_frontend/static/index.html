@@ -3,51 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <!-- Include Angular and several angular libraries -->
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-resource/angular-resource.min.js"></script>
     <!-- Include app -->
     <script src="js/app.js"></script>
-     <script src="js/filesModelDirective.js"></script>
+    <script src="js/filesModelDirective.js"></script>
     <script src="js/cats.rest.js"></script>
     <script src="js/auth.rest.js"></script>
 
-    <title>Hello Kitty</title>
+    <title>Share Your Cat</title>
 </head>
 <body>
 
 
-
 <div ng-app="catmodelFrontendApp" ng-controller="MainCtrl">
-    <form class="form" ng-submit="uploadAuthor()">
-        <input type="text" ng-model="newAuthor.first_name"  aria-invalid="false" placeholder="First Name" >
-        <input type="text" ng-model="newAuthor.last_name"  aria-invalid="false" placeholder="Last Name" >
-        <button type="submit">add me</button>
-    </form>
 
-    <form class="form" name="form1" ng-submit="uploadCats()">
-        <input type="text" ng-model="newCats.name" placeholder="Cats Name">
-        <input type="number" ng-model="newCats.age" placeholder="Cats Age">
-        <textarea ng-model="newCats.description" placeholder="Your cat description"></textarea>
-        <input type="file" files-model="newCats.image">
-<select ng-model="newCats.author" placeholder="And you are...?" >
-            <option ng-repeat="author in auth track by author.id" value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
- </select>
-        <button type="submit">add cat</button>
-    </form>
-
-
-    <div ng-repeat="author in auth track by author.id">
-        <h3>Cats of {{author.first_name}} {{author.last_name}}</h3>
-
-        <ul ng-repeat="cat in cats|filter:{'author': author.id}:true">
-            <button ng-click="deleteCat(cat)">!! Delete</button><br />
-            <li><img ng-src="{{ cat.image }}" width="121"></li>
-            <li><span>Name:</span> {{ cat.name }}</li>
-            <li><span>Age:</span> {{ cat.age }}</li>
-            <li><span>Description:</span> {{cat.description}}</li>
-        </ul>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Share Your Cat</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" role="form" ng-submit="uploadAuthor()">
+                    <div class="form-group">
+                        <input ng-model="newAuthor.first_name" aria-invalid="false" placeholder="First Name"
+                               class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="newAuthor.last_name" aria-invalid="false" placeholder="Last Name"
+                               class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Add me</button>
+                </form>
+            </div>
+        </div>
     </div>
+
+
+    <div class="jumbotron">
+        <div class="container" style="margin-top: 1%;">
+            <form class="form" name="form1" ng-submit="uploadCats()">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name:</label>
+                        <input type="text" ng-model="newCats.name" placeholder="Cats Name" class="form-control"
+                               id="name">
+                        <label for="name">Age:</label>
+                        <input type="number" ng-model="newCats.age" placeholder="Cats Age" class="form-control" id="age"
+                               min="0">
+
+                        <label for="sel1">Select your name:</label>
+                        <select class="form-control" ng-model="newCats.author" id="sel1">
+                            <option ng-repeat="author in auth track by author.id" value="{{author.id}}">
+                                {{author.first_name}}
+                                {{author.last_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="comment">Your cat description:</label>
+                        <textarea ng-model="newCats.description" placeholder="Your cat description" class="form-control"
+                                  rows="7" id="comment"></textarea>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+
+                            <button class="btn btn-primary" type="submit">Share your Cat for Great Good!!!</button>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+                            <input type="file" files-model="newCats.image">
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="container marketing">
+
+        <div class="row" ng-repeat="author in auth track by author.id">
+            <hr class="featurette-divider">
+            <h1>Cats of {{author.first_name}} {{author.last_name}}</h1>
+            <div class="col-lg-4" ng-repeat="cat in cats|filter:{'author': author.id}:true">
+                <img class="img-circle" ng-src="{{ cat.image }}" style="width: 140px; height: 140px;">
+                <h2>{{ cat.name }}</h2>
+                <h4>{{ cat.age }} years old Cat</h4>
+                <p>{{cat.description}}</p>
+                <p>
+                    <button ng-click="deleteCat(cat)" class="btn btn-danger">Delete</button>
+                </p>
+
+            </div>
+
+        </div>
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>© 2017
+        </footer>
+    </div>
+
+
 </div>
 
 

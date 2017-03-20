@@ -15,7 +15,7 @@ myApp.controller('MainCtrl', function($scope, Cats, Authors)
     $scope.newCats = {};
     $scope.newAuthor={};
 
-
+//delete cats
 $scope.deleteCat = function(cat)
     {
 
@@ -24,7 +24,7 @@ $scope.deleteCat = function(cat)
             {
                 // success delete
                 console.log('Deleted it');
-                // update $scope.images
+                // update $scope
                 $scope.cats = Cats.query();
             },
             function(rejection)

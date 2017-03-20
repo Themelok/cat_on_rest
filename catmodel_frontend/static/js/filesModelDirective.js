@@ -39,3 +39,5 @@ function transRequest(data) {
 
     return fd;
 }
+
+var sr = window.location.host;
