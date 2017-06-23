@@ -4,8 +4,6 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-# router.register(prefix='cats', viewset=CatViewSet)
-# router.register(prefix='authors', viewset=AuthorViewSet)
 router.register(prefix='cats', viewset=CatViewSet)
 router.register(prefix='authors', viewset=AuthorViewSet)
 urlpatterns = [
